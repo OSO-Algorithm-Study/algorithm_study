@@ -7,29 +7,16 @@ input = stdin.readline
 h, y = map(int, input().split())
 
 
-def makeMoney(money, per): # 돈, 이율
-    interest = math.trunc(money * (per/100))
-    return money + interest
+dp = [0 for i in range(y+1)]
+dp[0] = h
 
+for i in range(1, y+1):
+    if i >= 5:
+        dp[i] = max(dp[i-1]*1.05, dp[i-3]*1.2, dp[i-5]*1.35)
+    elif i >= 3:
+        dp[i] = max(dp[i-1]*1.05, dp[i-3] * 1.2)
+    else:
+        dp[i] = dp[i-1] * 1.05
+    dp[i] = int(dp[i])
 
-while True:
-    if y <= 0:
-        break
-    if y >= 5:
-        h = makeMoney(h, 35)
-        y = y-5 
-    elif y >= 3:
-        h = makeMoney(h, 20)
-        y = y-3
-    elif y >= 1:
-        h = makeMoney(h, 5)
-        y = y-1
-
-
-
-for per in pers:
-    for i in range(y):
-
-
-
-print(h)
+print(int(dp[y]))
