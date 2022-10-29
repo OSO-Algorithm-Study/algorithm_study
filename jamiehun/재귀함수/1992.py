@@ -1,3 +1,7 @@
+# 요약 : 1780 종이의 개수 풀이와 유사함
+# "(" ")" 를 잘 넣어줘야함
+# return 값을 적절한 위치에 넣어줘야 통과 가능함
+
 import sys
 input = sys.stdin.readline
 
@@ -48,9 +52,7 @@ def quad_tree(row, col, size):
             return  # ouput에 채운 다음에는 return 해야함
     return 
            
-                
-                
-                
+                    
 quad_tree(0, 0, size)
 
 print(output)
