@@ -14,7 +14,7 @@ def w(a, b, c):
         return 1
 
     if a > 20 or b > 20 or c > 20:
-        return w(20, 20, 20)
+        return w(20, 20, 20)    # index error
 
     if dp[a][b][c]:
         return dp[a][b][c]
