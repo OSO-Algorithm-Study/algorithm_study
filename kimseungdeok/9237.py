@@ -3,32 +3,15 @@ from sys import stdin
 stdin = open('example.txt', 'r')
 input = stdin.readline
 
-tree = int(input())
 
-days = list(map(int,input().split()))
+N = int(input())
 
-plant = []
-answer = 1
-
-
+days = list(map(int, input().split()))
 days.sort()
-days.reverse()
 
+for i in range(N):
+    days[i] = days[i] - i
 
+res = (N + 1) + max(days)
 
-while True:
-    if days.count(0) == tree: 
-        break
-    
-    days = list(map(lambda x: x-1 if x > 0 else 0, days))
-    # print(days)
-    answer += 1
-
-print(answer)
-
-        
-
-
-
-
-
+print(res)
