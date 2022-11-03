@@ -1,6 +1,7 @@
 ## Algorithm Study _ Ground Rules
 ### 노션 페이지로 바로가기
 https://www.notion.so/f26f5fefc8cf4f9ba4aa785c27abb039
+</br>
 
 ### 문제 풀이
 - 7일 5문제 푸는 것을 원칙으로 합니다. (목요일, 일요일 제외 오후 2시)
