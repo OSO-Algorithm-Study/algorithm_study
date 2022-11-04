@@ -1,3 +1,6 @@
+# https://www.acmicpc.net/problem/9237
+# 9327번 : 이장님 초대
+
 import sys
 input = sys.stdin.readline
 
@@ -6,28 +9,12 @@ trees = list(map(int, input().split()))
 
 trees.sort(reverse=True)
 
-# print(trees)
+# 하루에 한그루 씩 나무를 심었을 때,
+# 마지막 나무를 심은 다음날부터 나무가 더 자라야 할 날들
+for i in range(N):
+    trees[i] = trees[i] + i - N
 
-days = 0
-days = trees[0] + 1
-
-for i in range(1, N):
-    if trees[i-1] <= trees[i]+1:
-        days += (trees[i] + 1 - trees[i-1])
-
-days += 1
+# 나무가 자라야 할 최대 날 + 심은날 + 다음날 이장님 방문
+days = max(trees) + N + 1 + 1
 
 print(days)
-
-# 이전 나무와의 관계가 아닌 전체 나무의 최댓값 보기
-
-'''
-반례
-7 : -------
-3 :  ---
-3 :   ---
-
-세번째 나무(3)는 두번째 나무(3)보다 하루 더 필요하지만
-첫번째 나무(7)보다는 짧기 때문에 days에 카운트하지 않는다.
-
-'''
