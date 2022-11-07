@@ -9,30 +9,27 @@ from sys import stdin
 stdin = open('example.txt', 'r')
 input = stdin.readline
 
+def binary_search(start, end, nums, num):
+    while start <= end:
+        mid = (start + end) // 2
+
+        if nums[mid] == num:
+            return 1
+        elif nums[mid] < num:
+            start = mid+1
+        else:
+            end = mid-1
+    return 0
+
 tc = int(input())
 
-for i in range(tc):
+for _ in range(tc):
     n = int(input())
     nlist = list(map(int, input().split()))
+    nlist.sort()
     m = int(input())
     mlist = list(map(int, input().split()))
-    answer = [0] * m
-    for i in range(len(mlist)):
-        mlist[i] = (i,mlist[i])
-    
-    nlist.sort()
-    mlist.sort(key = lambda x : x[1])
-    for i in nlist:
-        for j in range(len(mlist)):
-            if i == mlist[j][1]:
-                answer[mlist[j][0]] = 1
-                continue
 
-
-for i in answer:
-    print(i)
-            
-    
-
-
+    for num in mlist:
+        print(binary_search(0, n-1, nlist, num))
     
