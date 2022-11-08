@@ -12,9 +12,8 @@ def dfs(a, target, count):
     if a > target:
         return
     
-    elif a == target and count < min_count:
+    elif a == target:
         min_count = min(min_count, count)
-        count_list.append(count)
         return 
     
     else:
@@ -24,8 +23,8 @@ def dfs(a, target, count):
 
 dfs(a, b, 0)
 # print(count_list)
-if count_list:
-    print(min(count_list) + 1)
+if min_count != 1e9:
+    print(min_count+1)
 else:
     print(-1)
 
