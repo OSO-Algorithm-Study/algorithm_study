@@ -1,3 +1,5 @@
+# https://wook-2124.tistory.com/476
+
 import sys
 input = sys.stdin.readline
 
