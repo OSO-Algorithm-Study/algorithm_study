@@ -3,9 +3,21 @@ from sys import stdin
 stdin = open('example.txt', 'r')
 input = stdin.readline
 
-n = int(input())
+def draw_stars(n):
+  if n==1:
+    return ['*']
 
-for i in range(0,n//3):
-    if(i == i//3 +1):
-        print("*") 
-    print("*"* (n//3)) 
+  Stars=draw_stars(n//3)
+  L=[]
+
+  for star in Stars:
+    L.append(star*3)
+  for star in Stars:
+    L.append(star+' '*(n//3)+star)
+  for star in Stars:
+    L.append(star*3)
+
+  return L
+
+N=int(input())
+print('\n'.join(draw_stars(N)))
