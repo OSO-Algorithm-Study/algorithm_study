@@ -18,7 +18,6 @@ n = int(sys.stdin.readline())
 
 
 
-
 # 기존 방식
 def empty(n):
     if n <= 0:
@@ -42,7 +41,7 @@ def star(n):
                 empty(n//3)
                 continue
             star(n//3)
-            print("")
+        print("")
         
             
 star(n)
