@@ -33,4 +33,5 @@ for _ in range(size_a + size_b):
 
         
 result = list(map(str, result))
+print(len(' '))
 print(' '.join(result))
