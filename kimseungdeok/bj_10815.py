@@ -11,19 +11,19 @@ numberCard = list(map(int, input().split()))
 m = int(input())
 numbers = list(map(int, input().split()))
 
+def binarySearch(target, start, end):
+    if start > end:
+        return 0
+    mid = (start + end) // 2
+    if numberCard[mid] == target:
+        return 1
+    elif numberCard[mid] > target:
+        return binarySearch(target, start, mid-1)
+    else:
+        return binarySearch(target, mid+1, end)
 
-numberCardSet = set(numberCard)
-numbersSet = set(numbers)
-inter = numberCardSet & numbersSet # 교집합
-
-# print(inter)
-
-answer = []
+numberCard.sort()
 
 for i in numbers:
-    if i in inter:
-        answer.append(1)
-    else:
-        answer.append(0)
+    print(binarySearch(i, 0, n-1), end=' ')
 
-print(*answer)
