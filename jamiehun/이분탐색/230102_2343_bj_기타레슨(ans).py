@@ -32,6 +32,8 @@ while (start <= end):
         end = mid - 1
         if (mid >= vm): # video 리스트의 최대값보다 클 경우에만 res값 갱신
             res = min(res, mid)
+        # 마지막 이 부분을 바로 생각하기가 좀 어려울듯 => 연습!
+        # else 안에 넣는 것과 vm보다 커야한다는 조건 자체가 바로 생각하기가 어려움
 
 
 print(res)
