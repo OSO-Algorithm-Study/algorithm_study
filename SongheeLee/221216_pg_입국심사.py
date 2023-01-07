@@ -1,3 +1,7 @@
+# 입국 심사
+# 이분탐색
+# 문제링크 https://school.programmers.co.kr/learn/courses/30/lessons/43238
+
 import sys
 
 n = 6
