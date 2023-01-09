@@ -1,3 +1,7 @@
+# 예산
+# 이분탐색
+# 문제링크 https://www.acmicpc.net/problem/2512
+
 import sys
 input = sys.stdin.readline
 
