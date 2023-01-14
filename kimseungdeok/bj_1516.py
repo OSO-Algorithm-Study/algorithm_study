@@ -1,27 +1,50 @@
 from sys import stdin
+from collections import deque
 
 stdin = open('example.txt', 'r')
 input = stdin.readline
 
 N = int(input())
-building = [[0]]
-# building = []
-for i in range(N):
-    building.append(input().split())
-    
+
+building = [[] for _ in range(N+1)]
+
+indegree = [0] * (N+1)
+
+cost = [0] * (N+1)
 
 for i in range(1, N+1):
-    building[i].pop()
-    
-print(building)
+    data = list(map(int, input().split()))[:-1]
+    cost[i] = data[0]
+    building_data = data[1:]
+    print(building_data)
 
-for nums in building:
-    for num in nums:
-        building
+    for j in building_data:
+        building[j].append(i)
+        indegree[i] += 1
+        print(building)
     
-# print(len(building))
-for numsIndex in range(len(building)):
-    print(numsIndex)
-    for building[numsIndex] in range(len(building[numsIndex])):
-        print(building[numsIndex] )
-        # print(building[numsIndex][building[numsIndex]])
+
+def topology_sort():
+    result = [0] * (N + 1)
+    q = deque()
+
+    for i in range(1, N + 1):
+        if indegree[i] == 0:
+            q.append(i)
+
+    while q:
+        now = q.popleft()
+
+        result[now] += cost[now]
+        for b in building[now]:
+            indegree[b] -= 1
+            
+            result[b] = max(result[b], result[now])
+            if indegree[b] == 0:
+                q.append(b)
+
+    return result
+
+answer = topology_sort()
+for i in range(1, N+1):
+    print(answer[i])
