@@ -23,7 +23,7 @@ def cut_paper(r, c, N):
         cut_paper(r+N, c+N, N)
 
 
-if __name__ == '_main_':
+if __name__ == "__main__":
     N = int(input())
     paper = [list(map(int,input().split())) for _ in range(N)]
 
