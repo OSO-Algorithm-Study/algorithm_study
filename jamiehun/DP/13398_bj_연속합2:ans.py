@@ -2,6 +2,8 @@ import sys
 n = int(sys.stdin.readline())
 list_n = [0] + list(map(int, sys.stdin.readline().split())) 
 dp = [[0] * (n+1) for _ in range(2)]
+dp[0][0] = -1e9
+dp[1][0] = -1e9
 # print(list_n)
 
 ans = -1e9 
@@ -24,3 +26,9 @@ for j in range(1, n+1):
 print(max_ans)
 
     
+# https://baby-ohgu.tistory.com/17
+# 반례로 인해 5번, 6번 라인 추가
+# [반례]
+# -3 -2 -1
+# 정답 -1
+# 출력 -2
