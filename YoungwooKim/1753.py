@@ -22,7 +22,7 @@ def dijkstra(start):
     while heap:
         dist, now = heapq.heappop(heap)
 
-        if distance[now] < dist:
+        if distance[now] < dist:    # dist보다 짧은 경로가 이미 기록되어 있으므로, 해당 경로로부터 탐색할 필요가 없음
             continue
 
         for i in graph[now]:
