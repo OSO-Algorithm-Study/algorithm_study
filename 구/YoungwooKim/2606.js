@@ -25,7 +25,7 @@ const graph = Array.from({ length: N + 1 }, () => []);
 // const graph = Array(N + 1).fill([]);
 
 for (let i = 0; i < M; i++) {
-  [a, b] = input[i].split(" ").map(Number);
+  const [a, b] = input[i].split(" ").map(Number);
   graph[a].push(b);
   graph[b].push(a);
 }
