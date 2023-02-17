@@ -1,4 +1,5 @@
 # 주의 : union_parent에서 최소값으로 하는 것이 만능은 아니다! (마지막에 체크해줘야할 때도 있음)
+# 반례참고 https://school.programmers.co.kr/questions/40414
 
 def solution(n, computers):
     global parent
