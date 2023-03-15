@@ -2,15 +2,16 @@ function hashStringToInt(s, tableSize) {
   let hash = 17;
 
   for (let i = 0; i < s.length; i++) {
-    hash = (13 * hash * s.charCodeAt(i)) % tableSize;
+    hash = (13 * hash * s.charCodeAt(s[i])) % tableSize;
   }
   return hash;
 }
 
 class HashTable {
-  table = new Array(3);
-
-  numItems = 0;
+  constructor() {
+    this.table = new Array(3);
+    this.numItems = 0;
+  }
 
   setItem = (key, value) => {
     this.numItems++;
