@@ -1,10 +1,10 @@
 function solution(users, emoticons) {
     // 1. 이모티콘 할인율 배열 만들기
     // 2. 이모티콘 구매 전체경우의 수
-    var answer = [];
+    // 3. 구한 경우의 수 가입자 수와 판매량으로 변환
+    // 4. 가입자 수로 정렬, 가입자 수가 같으면 판매량으로 정렬
     let discount = [0.9, 0.8, 0.7, 0.6];
     let discount_1 = [10, 20, 30, 40]; 
-    const visited = Array(emoticons.length).fill(0);
     
     function bfs (){
         const queue = [];
