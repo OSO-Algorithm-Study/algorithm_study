@@ -88,7 +88,3 @@ function solution(weights) {
 //     }
 //     return answer;
 // }
-
-const weights = [100, 180, 360, 100, 270];
-console.log(solution(weights));
-
