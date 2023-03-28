@@ -21,10 +21,6 @@ function solution(n, m, x, y, r, c, k) {
       return;
     }
 
-    if (graph[x1][y1] === 0 && (k - cnt / 2) % 2 === 0) {
-      answer += (k - (cnt + 1) / 2) * "rl";
-    }
-
     for (let i = 0; i < 4; i++) {
       let nx = x1 + dx[i];
       let ny = y1 + dy[i];
