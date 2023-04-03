@@ -12,6 +12,7 @@ def backtrack(depth):
 
   if depth == digit:
   	# 백트래킹 결과가 주어진 수보다 크면서 가장 작은 수가 답이 됩니다.
+    print(number)
     if X < number < minNumber:
       minNumber = number
     return
