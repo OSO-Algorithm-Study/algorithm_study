@@ -8,13 +8,13 @@ function solution(n, paths, gates, summits) {
         graph[i].push([w, j]);
         graph[j].push([w, i]);
     });
-
+    // 단방향으로 변환 (대칭성 활용)
     summits.sort((a, b) => (a - b)).forEach((summit) => {
         graph[summit] = [];
     });
 
     let queue = [];
-
+    // 출발지에 관계없이 최소 intensity
     gates.forEach((gate) => {
         intensity[gate] = 0;
         queue.push(gate);
@@ -22,7 +22,7 @@ function solution(n, paths, gates, summits) {
 
     while (queue.length) {
         let from = queue.shift();
-
+        // 다익스트라 변형
         for (const [weight, to] of graph[from]) {
             if (intensity[to] > Math.max(intensity[from], weight)) {
                 intensity[to] = Math.max(intensity[from], weight);
