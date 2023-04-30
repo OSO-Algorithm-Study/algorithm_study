@@ -1,53 +1,52 @@
+# 답안참고 : https://hz25.tistory.com/6 
+
+
+from collections import defaultdict
 from heapq import heappush, heappop
-
 def solution(n, paths, gates, summits):
-    answer = []
-    
-    routes = [[] for _ in range(n+1)]
-    
-    for p in paths:
-        routes[p[0]].append([p[1], p[2]])
-        routes[p[1]].append([p[0], p[2]])
+    def get_shortest_path():
+        q = []
+        visited = [10000001] * (n + 1)
+
+        for i in gates:
+            heappush(q, (0, i)) # distance / gate
+            visited[i] = 0
+
+        while q:
+            intensity, node = heappop(q)
+
+            if node in summits_set or intensity > visited[node]:
+                continue
+
+            for next_intensity, next_node in routes[node]:
+                max_intensity = max(intensity, next_intensity)
+
+                if max_intensity < visited[next_node]:
+                    visited[next_node] = max_intensity
+                    heappush(q, (max_intensity, next_node))
         
-    # print(routes)
-#   [[], [[3, 10], [4, 20]], [[3, 4], [4, 6]], [[1, 10], [2, 4], [5, 20]], [[1, 20], [2, 6], [5, 6]]]
-
-    q = []
-    visited = [10000001] * (n + 1)
-    
-    for i in range(len(gates)):
-        heappush(q, (0, gates[i])) # distance / gate
-        visited[gates[i]] = 0
-    
-    
-    
-    while q:
-        intensity, node = heappop(q)
+        min_intensity = [0, 10000001]
         
-        if node in summits :
-            answer.append([intensity, node])
-            continue
-            
-        for route in routes[node]:
-            next_node = route[0]
-            next_intensity = route[1]
-
-            max_intensity = max(intensity, next_intensity)
-
-            if max_intensity < visited[next_node]:
-                heappush(q, (max_intensity, next_node))
-                visited[next_node] = max_intensity
+        for s in summits:
+            if visited[s] < min_intensity[1]:
+                min_intensity[0] = s
+                min_intensity[1] = visited[s]
+        
+        return min_intensity
+        
     
-    print(answer)
+    summits.sort()
+    summits_set = set(summits)
     
-    return answer
+    routes = defaultdict(list)
+    
+    for i, j, k in paths:
+        routes[i].append((k, j))
+        routes[j].append((k, i))
+    
+    return get_shortest_path()
+        
+#     # print(routes)
+#     	# defaultdict(<class 'list'>, {1: [[2, 5], [4, 1]], 2: [[1, 5], [3, 1], [6, 7]], 4: [[1, 1], [5, 1]], 3: [[2, 1]], 6: [[2, 7], [5, 1], [7, 1]], 5: [[4, 1], [6, 1]], 7: [[6, 1]]})
 
 
-n = 5
-paths = [[1, 3, 10], [1, 4, 20], [2, 3, 4], [2, 4, 6], [3, 5, 20], [4, 5, 6]]
-gates = [1, 2]
-summits = [5]
-result = [5, 6]
-
-output = solution(n, paths, gates, summits)
-print(output)
